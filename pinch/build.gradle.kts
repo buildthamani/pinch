@@ -1,7 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
+    id("maven-publish")
 }
+
+group = "com.github.buildthamani"
+version = "1.0.0"
 
 android {
     namespace = "app.thamani.libs.pinch"
