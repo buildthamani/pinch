@@ -4,9 +4,6 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.github.buildthamani"
-version = "1.0.0"
-
 android {
     namespace = "app.thamani.libs.pinch"
     compileSdk {
@@ -35,6 +32,25 @@ android {
     }
     buildFeatures {
         compose = true
+    }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.buildthamani"
+                artifactId = "pinch"
+                version = "1.0.0"
+            }
+        }
     }
 }
 
