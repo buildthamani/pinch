@@ -1,6 +1,4 @@
 # Pinch
-A screenshot utility library
-
 [![](https://jitpack.io/v/buildthamani/pinch.svg)](https://jitpack.io/#buildthamani/pinch)
 
 ## Introduction
