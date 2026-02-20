@@ -8,7 +8,7 @@ It simplifies the process of adding screenshot functionality to your Android app
 
 ## Demo
 
-[![Watch the demo](https://placehold.co/600x400?text=Watch+Demo)](.github/assets/video/pinch.mp4)
+https://github.com/user-attachments/assets/a2bc2b7b-8d21-4c0f-b3e9-406ad91db283
 
 ## Installation
 
@@ -68,7 +68,7 @@ You can customize the behavior of the pinch gesture and screenshot capture using
 | `afterTakingScreenshot` | `() -> Unit` | `{}` | Callback invoked after the screenshot is taken. |
 | `pinched` | `(Bitmap) -> Unit` | `{}` | Callback providing the captured `Bitmap`. |
 
-### Example with Customization
+### Example
 
 ```kotlin
 Pinch(
