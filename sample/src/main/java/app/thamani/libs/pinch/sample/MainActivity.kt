@@ -22,22 +22,24 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PinchTheme {
-                Pinch(onScreenshotTaken = {
-                    Toast.makeText(this, "Screenshotted", Toast.LENGTH_SHORT).show()
-                }) {
+                Pinch(
+                    pinched = {
+                        Toast.makeText(this, "Screenshotted", Toast.LENGTH_SHORT).show()
+                    },
+                ) {
                     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                         Column(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(innerPadding),
+                            modifier =
+                                Modifier
+                                    .fillMaxSize()
+                                    .padding(innerPadding),
                             horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center
+                            verticalArrangement = Arrangement.Center,
                         ) {
                             Text(text = "Pinch")
                         }
                     }
                 }
-
             }
         }
     }

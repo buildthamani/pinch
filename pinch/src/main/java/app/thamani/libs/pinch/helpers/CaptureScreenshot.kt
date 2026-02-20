@@ -1,4 +1,4 @@
-package app.thamani.libs.pinch
+package app.thamani.libs.pinch.helpers
 
 import android.graphics.Bitmap
 import android.graphics.Rect
@@ -7,24 +7,29 @@ import android.os.Looper
 import android.view.PixelCopy
 import android.view.View
 import android.view.Window
+import androidx.core.graphics.createBitmap
+import app.thamani.libs.pinch.PinchState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.yield
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
-import androidx.core.graphics.createBitmap
 
 internal suspend fun captureScreenshot(
     window: Window,
     view: View,
+    delay: Long = 150L,
     state: PinchState,
+    before: () -> Unit,
+    after: () -> Unit,
 ): Bitmap {
-    // 1. Force Privacy Mode ON
+    // 1. run configurations before taking the screenshot
+    before()
     state.capturing = true
 
     // 2. Wait for UI to update
     yield()
-    delay(150)
+    delay(delay)
 
     // 3. Prepare the bitmap
     val bitmap = createBitmap(view.width, view.height)
@@ -49,7 +54,7 @@ internal suspend fun captureScreenshot(
                 rect,
                 bitmap,
                 { copyResult ->
-                    // Reset Privacy Mode immediately after copy
+
                     state.capturing = false
 
                     if (copyResult == PixelCopy.SUCCESS) {
@@ -63,8 +68,11 @@ internal suspend fun captureScreenshot(
                 Handler(Looper.getMainLooper()),
             )
         } catch (e: Exception) {
-            state.capturing = false
             continuation.resumeWithException(e)
+        } finally {
+            // 6. run configurations after taking the screenshot
+            state.capturing = false
+            after()
         }
     }
 }
