@@ -5,14 +5,12 @@ A screenshot utility library
 
 ## Introduction
 
-Pinch is a Jetpack Compose library that enables users to capture screenshots by performing a pinch-in gesture. It simplifies the process of adding screenshot functionality to your Android application, providing a smooth and interactive user experience.
+Pinch is a compose library that enables users to capture screenshots by performing a pinch-in gesture. 
+It simplifies the process of adding screenshot functionality to your Android application, providing a smooth and interactive user experience.
 
 ## Demo
 
-<div align="center">
-  <video src=".github/assets/video/pinch.mp4" controls="controls" style="max-width: 100%;">
-  </video>
-</div>
+[![Watch the demo](https://placehold.co/600x400?text=Watch+Demo)](.github/assets/video/pinch.mp4)
 
 ## Installation
 
@@ -35,7 +33,7 @@ dependencies {
 }
 ```
 
-Replace `Tag` with the latest version available on JitPack.
+> Replace `{tag}` with the latest version available on JitPack.
 
 ## Usage
 
